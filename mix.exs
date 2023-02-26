@@ -1,8 +1,8 @@
-defmodule NervesSystemOsd32mp1.MixProject do
+defmodule NervesSystemLicheeZero.MixProject do
   use Mix.Project
 
-  @github_organization "nerves-project"
-  @app :nerves_system_osd32mp1
+  @github_organization "tonnenpinguin"
+  @app :nerves_system_lichee_zero
   @source_url "https://github.com/#{@github_organization}/#{@app}"
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
@@ -58,7 +58,7 @@ defmodule NervesSystemOsd32mp1.MixProject do
         {"TARGET_OS", "linux"},
         {"TARGET_ABI", "gnueabihf"},
         {"TARGET_GCC_FLAGS",
-         "-mabi=aapcs-linux -mfpu=vfpv4-d16 -marm -fstack-protector-strong -mfloat-abi=hard -mcpu=cortex-a7 -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
+         "-mabi=aapcs-linux -mfpu=vfpv4 -marm -fstack-protector-strong -mfloat-abi=hard -mcpu=cortex-a7 -fPIE -pie -Wl,-z,now -Wl,-z,relro"}
       ],
       checksum: package_files()
     ]
@@ -76,7 +76,7 @@ defmodule NervesSystemOsd32mp1.MixProject do
 
   defp description do
     """
-    Nerves System - OSD32MP1
+    Nerves System - Lichee Zero
     """
   end
 
@@ -106,13 +106,12 @@ defmodule NervesSystemOsd32mp1.MixProject do
       "rootfs_overlay",
       "uboot",
       "CHANGELOG.md",
-      "extlinux.conf",
       "fwup-revert.conf",
       "fwup.conf",
       "LICENSE",
       "mix.exs",
       "nerves_defconfig",
-      "osd32mp1-brk.dts",
+      "sun8i-v3s-licheepi-zero.dts",
       "post-build.sh",
       "post-createfs.sh",
       "README.md",
@@ -136,7 +135,7 @@ defmodule NervesSystemOsd32mp1.MixProject do
     if function_exported?(Mix, :target, 1) do
       apply(Mix, :target, [:target])
     else
-      System.put_env("MIX_TARGET", "osd32mp1")
+      System.put_env("MIX_TARGET", "lichee_zero")
     end
   end
 end
